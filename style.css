@@ -1,0 +1,266 @@
+/* ================================
+   COLOR VARIABLES
+================================ */
+:root {
+  --bg: #111217;
+  --text: #ffffff;
+  --text-muted: #cfcfcf;
+  --card: #1b1c23;
+  --accent: #4da3ff;
+  --border: rgba(255,255,255,0.12);
+  --modal-bg: rgba(30,30,30,0.8);
+}
+
+.light-theme {
+  --bg: #f7f7f7;
+  --text: #1a1a1a;
+  --text-muted: #555;
+  --card: #ffffff;
+  --accent: #0066ff;
+  --border: rgba(0,0,0,0.12);
+  --modal-bg: rgba(255,255,255,0.8);
+}
+
+/* ================================
+   GLOBAL TEXT FIX
+================================ */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+section { padding-top: 80px; }
+
+body h1, body h2, body h3, body h4,
+body h5, body h6, body p, body span,
+body li, body a, body label {
+  color: var(--text) !important;
+}
+
+.text-muted,
+.text-secondary {
+  color: var(--text-muted) !important;
+}
+
+.dynamic-text { color: var(--accent) !important; }
+
+/* ================================
+   NAVBAR
+================================ */
+#mainNav {
+  background: rgba(10,10,15,0.85);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.light-theme #mainNav {
+  background: rgba(255,255,255,0.85);
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at top, var(--card), var(--bg));
+  position: relative;
+}
+
+.hero-canvas { position: absolute; inset: 0; }
+
+.profile-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.profile-img {
+  width: 80%;
+  border-radius: 20px;
+}
+
+/* ================================
+   ABOUT
+================================ */
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+}
+
+/* ================================
+   SKILLS (Aura Glow + 3D)
+================================ */
+.skill-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.skill-box:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.skill-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.7);
+  filter: blur(25px);
+  transition: 0.35s ease;
+  z-index: -1;
+}
+
+.skill-box:hover::after {
+  opacity: 0.55;
+  transform: scale(1.4);
+}
+
+/* FIX SKILL TEXT COLOR (FINAL) */
+.skill-box h4,
+.skill-box p,
+.skill-box li,
+.skill-box span {
+  color: var(--text) !important; /* Dark mode: putih, Light: hitam */
+}
+
+.light-theme .skill-box h4,
+.light-theme .skill-box p,
+.light-theme .skill-box li,
+.light-theme .skill-box span {
+  color: #111 !important;
+}
+
+body:not(.light-theme) .skill-box h4,
+body:not(.light-theme) .skill-box p,
+body:not(.light-theme) .skill-box li,
+body:not(.light-theme) .skill-box span {
+  color: #ffffff !important;
+}
+
+/* ================================
+   PROJECTS
+================================ */
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.7);
+  filter: blur(25px);
+  transition: 0.35s;
+  z-index: -1;
+}
+
+.project-card:hover::after {
+  opacity: 0.55;
+  transform: scale(1.4);
+}
+
+.project-img {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ================================
+   MODALS (UNIVERSAL & FIXED)
+================================ */
+
+.modal-content {
+  background: var(--card) !important;
+  border: 1px solid var(--border);
+  color: var(--text) !important;
+  border-radius: 18px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+
+.modal-content h3,
+.modal-content h4,
+.modal-content p,
+.modal-content li {
+  color: var(--text) !important;
+}
+
+/* Close button */
+.modal-header .btn-close {
+  filter: invert(1);
+}
+.light-theme .modal-header .btn-close {
+  filter: invert(0);
+}
+
+/* ================================
+   CONTACT BOX
+================================ */
+.contact-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.form-control {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.light-theme .form-control {
+  background: #fff;
+  color: #000;
+}
+
+/* ================================
+   REVEAL ANIMATION
+================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: 0.7s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
